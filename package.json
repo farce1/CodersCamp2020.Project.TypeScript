@@ -1,0 +1,52 @@
+{
+  "name": "coderscamp2020.project.typescript",
+  "version": "1.0.0",
+  "description": "TypeScript project written in plain TypeScript",
+  "main": "index.ts",
+  "scripts": {
+    "build": "npm run compile",
+    "clean": "rimraf ./build/",
+    "compile": "tsc",
+    "format": "prettier --write \"src/**/*.js\" \"src/**/*.ts\" \"test/**/*.js\" \"test/**/*.ts\"",
+    "fix": "eslint --fix '**/*.ts' && npm run format",
+    "lint": "eslint '**/*.ts'",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farce1/CodersCamp2020.Project.TypeScript.git"
+  },
+  "author": "CodersCampTeam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farce1/CodersCamp2020.Project.TypeScript/issues"
+  },
+  "homepage": "https://github.com/farce1/CodersCamp2020.Project.TypeScript#readme",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.3",
+    "@types/node": "^14.11.2",
+    "sass": "^1.32.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "testRegex": "(spec|test)[.]js",
+    "coverageDirectory": "../coverage",
+    "collectCoverageFrom": [
+      "./src/**"
+    ]
+  }
+}

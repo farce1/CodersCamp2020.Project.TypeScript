@@ -4,13 +4,15 @@
   "description": "TypeScript project written in plain TypeScript",
   "main": "index.ts",
   "scripts": {
-    "build": "npm run compile",
-    "clean": "rimraf ./build/",
+    "clean": "rimraf .cache && rimraf ./build/ && rimraf ./dist/",
+    "build:ts": "npm run clean && npm run compile",
+    "build": "npm run clean && parcel build public/index.html --public-url ./",
     "compile": "tsc",
-    "format": "prettier --write \"src/**/*.js\" \"src/**/*.ts\" \"test/**/*.js\" \"test/**/*.ts\"",
-    "fix": "eslint --fix '**/*.ts' && npm run format",
-    "lint": "eslint '**/*.ts'",
-    "test": "jest"
+    "format": "prettier --write \"src/**/*.ts\"",
+    "fix": "eslint --fix \"src/**/*.ts\" && npm run format",
+    "lint": "eslint \"src/**/*.ts\"",
+    "test": "npm run lint && jest",
+    "start:dev": "parcel -p 7575 public/index.html --open"
   },
   "repository": {
     "type": "git",
@@ -23,19 +25,32 @@
   },
   "homepage": "https://github.com/farce1/CodersCamp2020.Project.TypeScript#readme",
   "dependencies": {
+    "parcel": "^1.12.4",
+    "regenerator-runtime": "^0.13.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@testing-library/dom": "^7.26.6",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/user-event": "^12.2.2",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.11.2",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.6.3",
+    "jest-fetch-mock": "^3.0.3",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.5.0",
     "prettier": "^2.1.2",
-    "rimraf": "^3.0.2"
-  },
-  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "sass": "^1.32.4",
     "typescript": "^4.0.3",
-    "@types/node": "^14.11.2",
-    "sass": "^1.32.4"
+    "ts-jest": "^26.4.4"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -43,10 +58,24 @@
       "json",
       "ts"
     ],
-    "testRegex": "(spec|test)[.]js",
+    "setupFiles": [
+      "./setupJest.ts"
+    ],
+    "testRegex": "(spec|test)[.]ts",
     "coverageDirectory": "../coverage",
     "collectCoverageFrom": [
       "./src/**"
-    ]
+    ],
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "staticFiles": {
+      "staticPath": [
+        {
+          "staticPath": "static",
+          "staticOutDir": "static"
+        }
+      ]
+    }
   }
 }

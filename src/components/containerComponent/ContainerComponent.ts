@@ -1,13 +1,13 @@
-type ContainerComponentLabel = string | HTMLElement;
+import { render } from '../../utils/domHandlers';
 
-export const ContainerComponent = (
-  label: ContainerComponentLabel,
-  parentId?: string,
-  className?: string
-): HTMLDivElement => {
+type ContainerComponentLabel = string | HTMLElement;
+type xxx = HTMLDivElement | HTMLElement;
+
+export const ContainerComponent = (label: ContainerComponentLabel, parentId?: string, className?: string): xxx => {
   const container = document.createElement('div');
   className && container.classList.add(className);
-  parentId && container.setAttribute('id', parentId);
+  container.setAttribute('id', 'container-component');
+  container.setAttribute('data-testid', 'container-component');
   if (typeof label === 'string') {
     const isImage = /.jpg/.test(label);
     if (isImage) {
@@ -18,5 +18,7 @@ export const ContainerComponent = (
   } else {
     container.appendChild(label);
   }
-  return container;
+
+  const element = parentId && document.getElementById(`${parentId}`);
+  return element ? render(container, element) : container;
 };

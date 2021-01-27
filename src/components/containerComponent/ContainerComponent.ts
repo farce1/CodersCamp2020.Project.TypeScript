@@ -1,9 +1,13 @@
 import { render } from '../../utils/domHandlers';
 
 type ContainerComponentLabel = string | HTMLElement;
-type xxx = HTMLDivElement | HTMLElement;
+type ContainerComponent = HTMLDivElement | HTMLElement;
 
-export const ContainerComponent = (label: ContainerComponentLabel, parentId?: string, className?: string): xxx => {
+export const ContainerComponent = (
+  label: ContainerComponentLabel,
+  className?: string,
+  parentId?: string
+): ContainerComponent => {
   const container = document.createElement('div');
   className && container.classList.add(className);
   container.setAttribute('id', 'container-component');

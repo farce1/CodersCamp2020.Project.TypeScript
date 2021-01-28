@@ -1,4 +1,5 @@
 import { render } from '../../utils/domHandlers';
+import { handleStringScenario } from '../../utils/functions';
 
 type ContainerComponentLabel = string | HTMLElement;
 type ContainerComponent = HTMLDivElement | HTMLElement;
@@ -17,14 +18,4 @@ export const ContainerComponent = (
 
   const element = parentId && document.getElementById(`${parentId}`);
   return element ? render(container, element) : container;
-};
-
-const handleStringScenario = (label: string, container: HTMLDivElement): HTMLDivElement => {
-  const isImage = /.jpg/.test(label);
-  if (isImage) {
-    container.style.background = `url("${label}") no-repeat`;
-  } else {
-    container.innerText = label;
-  }
-  return container;
 };

@@ -12,17 +12,19 @@ export const ContainerComponent = (
   className && container.classList.add(className);
   container.setAttribute('id', 'container-component');
   container.setAttribute('data-testid', 'container-component');
-  if (typeof label === 'string') {
-    const isImage = /.jpg/.test(label);
-    if (isImage) {
-      container.style.background = `url("${label}") no-repeat`;
-    } else {
-      container.innerText = label;
-    }
-  } else {
-    container.appendChild(label);
-  }
+
+  typeof label === 'string' ? handleStringScenario(label, container) : container.appendChild(label);
 
   const element = parentId && document.getElementById(`${parentId}`);
   return element ? render(container, element) : container;
+};
+
+const handleStringScenario = (label: string, container: HTMLDivElement): HTMLDivElement => {
+  const isImage = /.jpg/.test(label);
+  if (isImage) {
+    container.style.background = `url("${label}") no-repeat`;
+  } else {
+    container.innerText = label;
+  }
+  return container;
 };

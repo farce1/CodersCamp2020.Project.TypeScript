@@ -1,1 +1,7 @@
 // Plik styli aplikacji
+@import "variables";
+
+#geo-app{
+  min-height: 100vh;
+  background-image: $gradient_background;
+}

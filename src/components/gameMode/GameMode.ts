@@ -2,7 +2,7 @@ type ContainerComponentLabel = HTMLElement | string
 
 export const gameMode = (
   label: ContainerComponentLabel,
-  onClick: void,
+  onClick: () => void,
   parentId?: string,
   className?: string
 ): HTMLElement => {

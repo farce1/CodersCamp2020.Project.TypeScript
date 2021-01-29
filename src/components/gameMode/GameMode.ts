@@ -1,23 +1,24 @@
-type ContainerComponentLabel = HTMLElement | string
+import { handleStringScenario } from '../../utils/functions';
+type ContainerComponentLabel = HTMLElement | string;
 
 export const gameMode = (
   label: ContainerComponentLabel,
   onClick: () => void,
-  parentId?: string,
-  className?: string
-): HTMLElement => {
-  const component: HTMLElement = document.createElement('button')!
+  className?: string,
+  parentId?: string
+): HTMLDivElement => {
+  const component: HTMLDivElement = document.createElement('div')!;
+  component.classList.add('mode-tile');
 
-  label = HTMLElement
-    ? (component.innerHTML = `${label}`)
-    : /(jpg|gif|png|JPG|GIF|PNG|JPEG|jpeg)$/.test(`${label}`)
-    ? (component.style.backgroundImage = `url(${label})`)
-    : (component.innerText = `${label}`)
+  typeof label === 'string' ? handleStringScenario(label, component) : component.appendChild(label);
 
-  component.addEventListener('click', onClick)
+  if (className) {
+    component.classList.add(`${className}`);
+  }
+  component.innerHTML = `<div class = 'hide'>test</div>`;
+  const parentEl = document.getElementById(`${parentId}`)!;
 
-  const parentEl = document.getElementById(`${parentId}`)
-  component.classList.add(`${className}`)
+  component.addEventListener('click', onClick);
 
-  return parentEl ? parentEl.appendChild(component) : component
-}
+  return parentEl ? parentEl.appendChild(component) : component;
+};

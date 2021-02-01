@@ -1,9 +1,13 @@
-const Title = (label: string, id: string): HTMLDivElement => {
-  const AnimatedTitle = document.createElement('div')
+const Title = (
+  label: string,
+  id: string,
+  className = 'title'
+): HTMLDivElement => {
+  const AnimatedTitle: HTMLDivElement = document.createElement('div')
   AnimatedTitle.id = id
   AnimatedTitle.setAttribute('data-testid', id)
   label.split('').map((letter: string, index: number) => {
-    const span = document.createElement('span')
+    const span: HTMLSpanElement = document.createElement('span')
     span.textContent = letter
     span.style.animationDelay = `${100 * (label.length - index)}ms`
     span.style.animationName = `${id}Animation`
@@ -12,7 +16,9 @@ const Title = (label: string, id: string): HTMLDivElement => {
       window.location.href = '/'
     })
   })
-  AnimatedTitle.className = 'title'
+
+  AnimatedTitle.className = className
+
   return AnimatedTitle
 }
 export default Title

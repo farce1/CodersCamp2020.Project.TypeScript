@@ -1,6 +1,8 @@
 import { render } from '../../utils/domHandlers';
 import { Button } from './Button';
 
+const label = 'lorem ipsum';
+
 describe('Test Button Component', () => {
   beforeEach(() => {
     document.body.innerHTML = '<div id="geo-app"></div>';
@@ -10,10 +12,10 @@ describe('Test Button Component', () => {
     const appComponent = document.getElementById('geo-app');
     appComponent &&
       render(
-        Button('text', () => {}),
+        Button(label, () => {}),
         appComponent
       );
-    expect(document.getElementById('button')?.innerText).toBe('text');
+    expect(document.getElementById(`button-${label}`)?.innerText).toBe(label);
   });
 
   it('Should contain className', () => {
@@ -21,20 +23,20 @@ describe('Test Button Component', () => {
 
     appComponent &&
       render(
-        Button('text', () => {}, 'false-btn'),
+        Button(label, () => {}, 'false-btn'),
         appComponent
       );
-    expect(document.getElementById('button')?.classList.contains('basic-btn')).toBeTruthy();
-    expect(document.getElementById('button')?.classList.contains('false-btn')).toBeTruthy();
+    expect(document.getElementById(`button-${label}`)?.classList.contains('basic-btn')).toBeTruthy();
+    expect(document.getElementById(`button-${label}`)?.classList.contains('false-btn')).toBeTruthy();
   });
 
   it('Should render component in parent component', () => {
     const appComponent = document.getElementById('geo-app');
 
     if (appComponent) {
-      Button('text', () => {}, 'testing-class', 'geo-app');
+      Button(label, () => {}, 'testing-class', 'geo-app');
       expect(document.getElementById('geo-app')?.innerHTML).toBe(
-        '<div id="button" class="basic-btn testing-class"></div>'
+        `<div id="button-${label}" class="basic-btn testing-class"></div>`
       );
     }
   });
@@ -42,8 +44,8 @@ describe('Test Button Component', () => {
   it('Should handle onClick properly', () => {
     const appComponent = document.getElementById('geo-app');
     const onClick = jest.fn();
-    appComponent && render(Button('text', onClick), appComponent);
-    const btn = document.getElementById('button');
+    appComponent && render(Button(label, onClick), appComponent);
+    const btn = document.getElementById(`button-${label}`);
     btn?.click();
     expect(onClick).toHaveBeenCalled();
   });

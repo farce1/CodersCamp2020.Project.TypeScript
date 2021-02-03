@@ -1,6 +1,13 @@
 // opisanie głównych elementów
 @import 'app';
+
+@import 'variables';
+
 @import "reset";
-@import "variables";
+
+
 // Components
 @import '../components/button/Button';
+
+@import '../components/Title/Title.scss';
+

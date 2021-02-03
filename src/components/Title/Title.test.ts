@@ -3,7 +3,7 @@
 import '@testing-library/jest-dom'
 import { getByTestId } from '@testing-library/dom'
 import { render } from '../../utils/domHandlers'
-import { MainScreen } from '../../views/MainScreen'
+import { MainScreen } from '../../views/MainScreen/MainScreen'
 import Title from './Title'
 describe('Test title component', () => {
   const AnimatedTitle: HTMLDivElement = Title('titleText', 'animatedTitle')

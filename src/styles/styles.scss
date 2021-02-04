@@ -1,8 +1,12 @@
 // opisanie głównych elementów
 @import 'app';
-@import "variables";
-
 @import 'normalize';
-@import 'src/components/containerComponent/ContainerComponent';
-// Components
+@import 'variables';
+@import "reset";
 
+
+
+
+// Components
+@import '../components/Title/Title.scss';
+@import 'src/components/containerComponent/ContainerComponent';

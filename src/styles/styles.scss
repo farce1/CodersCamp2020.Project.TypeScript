@@ -1,8 +1,7 @@
 // opisanie głównych elementów
 @import 'app';
-
+@import 'normalize';
 @import 'variables';
-
 @import "reset";
 
 
@@ -10,4 +9,4 @@
 @import '../components/button/Button';
 
 @import '../components/Title/Title.scss';
-
+@import 'src/components/containerComponent/ContainerComponent';

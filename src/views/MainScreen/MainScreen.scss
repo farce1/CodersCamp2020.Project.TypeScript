@@ -1,0 +1,135 @@
+@-webkit-keyframes swing-bottom-fwd {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+  }
+  100% {
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+  }
+}
+
+@keyframes slide-bottom {
+  100% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(230px);
+  }
+}
+@keyframes show-up {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.animated-logo {
+  animation: slide-bottom 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: 1200ms;
+}
+.logo__wrapper {
+  position: absolute;
+  z-index: 0;
+  top: -100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.rules__wrapper {
+  margin: 20px auto;
+  height: 400px;
+  background: #fad586;
+  border-radius: 15px;
+  padding: 22px;
+  width: 83%;
+  font-family: Rubik;
+  opacity: 0;
+  animation: show-up 600ms ease-in-out 1500ms forwards;
+}
+@media (min-width: 1856px) {
+  .rules__wrapper {
+    margin: 145px auto;
+  }
+}
+
+.rules__wrapper > label {
+  font-size: 30px;
+  font-weight: 400;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+.rules__wrapper > p {
+  font-size: 22px;
+  margin: 10px 2px;
+}
+.main-screen__button {
+  font-size: 45px;
+}
+.main-screen_buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: nowrap;
+  gap: 30px;
+
+  padding: 0 320px;
+  opacity: 0;
+  animation: show-up 600ms ease-in-out 1500ms forwards;
+  box-sizing: border-box;
+  text-align: center;
+}
+@media (min-width: 1856px) {
+  .main-screen_buttons-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.main-screen__rules-select {
+  background-color: $color-background-secondary;
+  font-family: Coiny;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  width: 400px;
+  height: 100px;
+  border-radius: 15px;
+
+  text-align: center;
+
+  color: black;
+  display: flex;
+  text-align: center;
+}
+.righ-arrow-button,
+.left-arrow-button {
+  background-color: transparent;
+  border: 0;
+  color: black;
+  box-shadow: none;
+  width: fit-content;
+  padding: 8px;
+}
+
+.left-arrow-button::after {
+  content: '🡅';
+}
+.righ-arrow-button::after {
+  content: '🡇';
+}
+@media (min-width: 1856px) {
+  .left-arrow-button::after {
+    content: '🡄';
+  }
+  .righ-arrow-button::after {
+    content: '🡆';
+  }
+}

@@ -1,0 +1,22 @@
+.basic-btn {
+  border-radius: 15px;
+  cursor: pointer;
+  width: 400px;
+  height: 100px;
+  font: $font-primary;
+  line-height: 85px;
+  font-size: 72px;
+  text-align: center;
+  text-transform: capitalize;
+  color: $color-font-primary;
+  background-color: #86a459;
+  box-shadow: 2px 2px 4px #000000;
+}
+
+.false-btn {
+  background-color: $color-font-false;
+}
+
+.true-btn {
+  background-color: $color-font-true;
+}

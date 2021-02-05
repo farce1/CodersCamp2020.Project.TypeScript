@@ -1,9 +1,18 @@
 // opisanie głównych elementów
 @import 'app';
-@import "variables";
+@import 'normalize';
+@import 'variables';
+@import "reset";
+
 
 @import 'normalize';
 @import 'src/components/containerComponent/ContainerComponent';
 // Components
+@import '../components/button/Button';
+
 
 @import '../components/gameMode/game-mode.scss'
+
+@import '../components/Title/Title.scss';
+@import 'src/components/containerComponent/ContainerComponent';
+

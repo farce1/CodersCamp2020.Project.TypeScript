@@ -104,5 +104,7 @@ dist
 # TernJS port file
 .tern-port
 
-# webstorm
+
+# Webstorm
+
 .idea

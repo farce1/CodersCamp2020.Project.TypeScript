@@ -1,25 +1,24 @@
 import * as fs from 'fs';
+import { addElementToParent } from '../../utils/addElementToParent/addElementToParent';
 
 const gameWindow = (gamesOption: {continent: string, gamesMode: string}) => {
     const parentDiv: HTMLElement = document.createElement('div');
     parentDiv.className = 'continent';
     switch (gamesOption.continent) {
         case 'Europe':
-            parentDiv.innerText = fs.readFileSync('static/assets/europe.svg', 'utf-8');
+            parentDiv.innerHTML = fs.readFileSync('src/assets/svg/europe.svg', 'utf-8');
             break;
         case 'Africa':
-            parentDiv.innerText = fs.readFileSync('static/assets/africa.svg', 'utf-8');
+            parentDiv.innerHTML = fs.readFileSync('src/assets/svg/africa.svg', 'utf-8');
             break;
         case 'North America':
-            parentDiv.innerText = fs.readFileSync('static/assets/north-america.svg', 'utf-8');
+            parentDiv.innerHTML = fs.readFileSync('src/assets/svg/north-america.svg', 'utf-8');
             break
         default:
-            parentDiv.innerText = '';
+            parentDiv.innerHTML = '';
             break;
     }
-    const appComponent: HTMLElement = document.getElementById('geo-app')!
-    console.log(appComponent);
-    appComponent.appendChild(parentDiv);
+    addElementToParent('geo-app', parentDiv)
 }
 
 

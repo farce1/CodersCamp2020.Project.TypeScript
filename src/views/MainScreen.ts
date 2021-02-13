@@ -5,7 +5,7 @@ export const MainScreen = (): HTMLElement => {
   container.classList.add('mainContainer');
   container.id = 'mainContainer';
 
-  const defaultGameModeName: string = 'EUROPE';
+  const defaultGameModeName = 'EUROPE';
 
   resetView(container);
   const mapGameScreen = new MapGameScreen({

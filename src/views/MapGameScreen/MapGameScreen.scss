@@ -1,0 +1,19 @@
+.europe_map_container{
+    padding-top: 100px;
+    margin: auto;
+    width: 50%;
+    height: 50vh;
+    border: 3px solid green;
+    padding: 10px;
+  }
+    .map_europe {
+      position: relative; 
+      height: 100%; 
+      width: 100%; 
+      left: 0; 
+      top: 0;
+    }
+  .map_europe path:hover{
+    fill: red !important;
+    transition-duration: 1s;
+  }

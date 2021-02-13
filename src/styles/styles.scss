@@ -7,6 +7,8 @@
 
 // Components
 @import '../components/button/Button';
-
-@import '../components/Title/Title.scss';
+@import '../components/Title/Title';
 @import 'src/components/containerComponent/ContainerComponent';
+
+// Views
+@import '../views/MapGameScreen/MapGameScreen'

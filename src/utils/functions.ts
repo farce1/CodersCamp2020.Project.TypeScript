@@ -7,3 +7,14 @@ export const handleStringScenario = (label: string, container: HTMLDivElement): 
   }
   return container;
 };
+
+export const mapFunctionScript = (generatedCountryId : string) => `
+function notify(evt){
+  const fullCountryId = evt.target.id;
+  const countryId = fullCountryId.substring(0,2);
+  const generatedCountry = '${generatedCountryId}'
+  if ('caches' in window){
+    alert('Cache available')
+}
+}
+`

@@ -1,4 +1,4 @@
-export const europeMap = () : string => `
+export const europeMap = (): string => `
 <div class="europe_map_container">
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -621,5 +621,4 @@ export const europeMap = () : string => `
        style="fill:none;stroke-width:6.11153841;stroke-miterlimit:4;stroke-dasharray:none" />
   </g>
 </svg>
-</div>`
-}
+</div>`;

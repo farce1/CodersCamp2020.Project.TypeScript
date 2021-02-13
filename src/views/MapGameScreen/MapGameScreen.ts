@@ -1,22 +1,23 @@
-import { europeMap } from "../../utils/maps/europe";
-import { GameEngine } from "../../app/GameEngine";
+import { europeMap } from '../../utils/maps/europe';
+import { GameEngine } from '../../app/GameEngine';
 
 export class MapGameScreen {
-    constructor(
-        private settings: {
-        gameContainter: HTMLElement,
-        gameMode: string,
-        clearViewCallbackFunction: () => void
-        }) {}
+  constructor(
+    private settings: {
+      gameContainter: HTMLElement;
+      gameMode: string;
+      clearViewCallbackFunction: () => void;
+    }
+  ) {}
 
-        _clearMainContainer() {
-            this.settings.clearViewCallbackFunction();
-          }
+  _clearMainContainer() : void {
+    this.settings.clearViewCallbackFunction();
+  }
 
-        startGame() {
-            const countryGameEngine = new GameEngine()
-            this._clearMainContainer();
-            this.settings.gameContainter.insertAdjacentHTML('afterbegin', europeMap());
-            countryGameEngine.startEngine()
-        }
+  startGame() {
+    const countryGameEngine = new GameEngine();
+    this._clearMainContainer();
+    this.settings.gameContainter.insertAdjacentHTML('afterbegin', europeMap());
+    countryGameEngine.startEngine();
+  }
 }

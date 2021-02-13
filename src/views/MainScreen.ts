@@ -1,27 +1,26 @@
-import { MapGameScreen } from './MapGameScreen/MapGameScreen'
+import { MapGameScreen } from './MapGameScreen/MapGameScreen';
 
 export const MainScreen = (): HTMLElement => {
-
-  const container = document.createElement('section');
+  const container: HTMLElement = document.createElement('section');
   container.classList.add('mainContainer');
   container.id = 'mainContainer';
 
-  const defaultGameModeName : string = 'EUROPE'
+  const defaultGameModeName: string = 'EUROPE';
 
-  resetView(container)
+  resetView(container);
   const mapGameScreen = new MapGameScreen({
     gameContainter: container,
     gameMode: defaultGameModeName,
-    clearViewCallbackFunction: () : void => {
+    clearViewCallbackFunction: (): void => {
       resetView(container);
-    }
-  })
+    },
+  });
 
   mapGameScreen.startGame();
 
   return container;
 };
 
-function resetView(parent : HTMLElement) {
+function resetView(parent: HTMLElement): void {
   parent.innerHTML = '';
 }

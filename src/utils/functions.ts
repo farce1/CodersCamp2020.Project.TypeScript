@@ -8,7 +8,7 @@ export const handleStringScenario = (label: string, container: HTMLDivElement): 
   return container;
 };
 
-export const mapFunctionScript = (generatedCountryId : string) => `
+export const mapFunctionScript = (generatedCountryId: string) => `
 function notify(evt){
   const fullCountryId = evt.target.id;
   const countryId = fullCountryId.substring(0,2);
@@ -17,4 +17,4 @@ function notify(evt){
     alert('Cache available')
 }
 }
-`
+`;

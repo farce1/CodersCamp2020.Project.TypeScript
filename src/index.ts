@@ -1,3 +1,3 @@
-import { App } from './app/App'
+import { App } from './app/App';
 
-window.onload = () => App()
+window.onload = () => App();

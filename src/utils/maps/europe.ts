@@ -1,5 +1,5 @@
 export const europeMap = (): string => `
-<div class="europe_map_container">
+<div class="europe_map_container" id="europe_map_container">
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"

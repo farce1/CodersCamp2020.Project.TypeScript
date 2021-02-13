@@ -10,7 +10,7 @@ export class MapGameScreen {
     }
   ) {}
 
-  _clearMainContainer() : void {
+  _clearMainContainer(): void {
     this.settings.clearViewCallbackFunction();
   }
 
@@ -18,6 +18,6 @@ export class MapGameScreen {
     const countryGameEngine = new GameEngine();
     this._clearMainContainer();
     this.settings.gameContainter.insertAdjacentHTML('afterbegin', europeMap());
-    countryGameEngine.startEngine();
+    countryGameEngine.startEngine(this.settings.gameContainter);
   }
 }

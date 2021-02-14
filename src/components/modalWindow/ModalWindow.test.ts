@@ -1,4 +1,4 @@
-import {ModalWindow} from './ModalWindow'
+import {ModalWindow} from './ModalWindow';
 import { render } from '../../utils/domHandlers';
 
 describe('Test modal Window', () => {
@@ -12,7 +12,7 @@ describe('Test modal Window', () => {
         render(ModalWindow('string',(e)=>{}), component);
         expect(document.querySelector('.modal-window-content')?.innerHTML).toBe('<div>string</div>');
     }
-  })
+  });
 
 
 
@@ -36,4 +36,5 @@ describe('Test modal Window', () => {
       expect(component.classList.contains('modal-window-visible')).toBeTruthy();
     }
   });
+
 });

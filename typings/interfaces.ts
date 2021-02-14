@@ -6,7 +6,7 @@ export interface Country {
 }
 
 export interface GameEngineSettings {
-  userAnswers: Object[];
+  userProperAnswers: Object[];
   countryGenerator: CountryGenerator;
   countryToAsk: Country[];
 }

@@ -22,12 +22,14 @@ function notify(evt){
   const countryId = fullCountryId.substring(0,2);
   const generatedCountry = '${alpha2Code.toLowerCase()}'
   const goodAnswers = [];
+  const event =  new CustomEvent("klik");
+  
   if (countryId === generatedCountry) {
     evt.target.style.fill = '#96bb7c';
     goodAnswers.push(countryId)
     localStorage.setItem("goodAnswers", goodAnswers)
-    console.log('hej')
     alert('Świetnie! Poprawnie wskazałeś - ${name}')
+    document.dispatchEvent(event); 
 } else {
   alert('ZŁA ODPOWIEDŹ - SPRÓBUJ ZNOWU')
 }

@@ -1,12 +1,12 @@
-import { CountryGenerator } from "../src/utils/api/countryGenerator";
+import { CountryGenerator } from '../src/utils/api/countryGenerator';
 
 export interface Country {
-    name: string,
-    alpha2Code: string
+  name: string;
+  alpha2Code: string;
 }
 
 export interface GameEngineSettings {
-    userAnswers: Object[],
-    countryGenerator: CountryGenerator,
-    countryToAsk: Object[]
+  userAnswers: Object[];
+  countryGenerator: CountryGenerator;
+  countryToAsk: Country[];
 }

@@ -30,9 +30,24 @@ export class GameEngine {
   }
 
   async _generateCountry(): Promise<void> {
-    const country: Country = await this.settings.countryGenerator.getCountry();
-    this.currentCountry = country;
-    this.settings.countryToAsk.push(country);
-    this._addCountryScriptFunction(country);
+    const generateRandomUniqueIndexes = (indexesArray: number[] = []): number[] => {
+      if (indexesArray.length === 24) {
+        return indexesArray;
+      }
+      const randomNumber = Math.floor(Math.random() * 54);
+      if (!indexesArray.includes(randomNumber)) {
+        indexesArray.push(randomNumber);
+      }
+      return generateRandomUniqueIndexes(indexesArray);
+    };
+
+    const randomNumbers = generateRandomUniqueIndexes();
+    const countries = await this.settings.countryGenerator.getCountry();
+
+    this.settings.countryToAsk = randomNumbers.map((num: number) => countries[num]);
+    console.log(this.settings.countryToAsk);
+    this.currentCountry = this.settings.countryToAsk[0];
+    console.log(this.currentCountry);
+    this._addCountryScriptFunction(this.settings.countryToAsk[0]);
   }
 }

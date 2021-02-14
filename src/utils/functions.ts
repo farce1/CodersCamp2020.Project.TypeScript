@@ -26,6 +26,7 @@ function notify(evt){
     evt.target.style.fill = '#96bb7c';
     goodAnswers.push(countryId)
     localStorage.setItem("goodAnswers", goodAnswers)
+    console.log('hej')
     alert('Świetnie! Poprawnie wskazałeś - ${name}')
 } else {
   alert('ZŁA ODPOWIEDŹ - SPRÓBUJ ZNOWU')

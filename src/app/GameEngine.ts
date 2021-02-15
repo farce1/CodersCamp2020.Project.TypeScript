@@ -7,7 +7,7 @@ import { render } from '../utils/domHandlers';
 import { MainScreen } from '../views/MainScreen';
 import { removeElementFromParent } from '../utils/removeElementFromParent/removeElementFromParent';
 import { StartWindow } from '../components/startWindow/StartWindow';
-import { appComponent, openStartWindow } from '../utils/startWindowConst';
+import { appComponent, openStartWindow } from '../utils/constsTagElementsAndWindows';
 
 const countryLabel = (label: string): string => `Zaznacz na mapie - ${getTranslationForCountryName(label)}`;
 export class GameEngine {

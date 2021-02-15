@@ -1,4 +1,4 @@
-import { appComponent, openStartWindow } from '../utils/startWindowConst';
+import { appComponent, openStartWindow } from '../utils/constsTagElementsAndWindows';
 
 export const App = (): void => {
   openStartWindow();

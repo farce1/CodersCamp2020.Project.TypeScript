@@ -12,7 +12,7 @@ export const endWindow = (goodAnserw: String) => {
   parentDiv.innerHTML = `<h1>Koniec gry</h1>
 						<p>Na <span>${goodAnserw}</span> wskazanych kraji popełniłeś <span>${wrongAnswers}</span> błędów</p>
 							`;
-  const button = Button(
+  const buttonPlayAgain = Button(
     'Zagraj ponownie',
     () => {
       localStorage.setItem('wrongAnswers', '0');
@@ -22,6 +22,19 @@ export const endWindow = (goodAnserw: String) => {
     'play-again',
     'end-window'
   );
-  addElementToParent('end-window', button);
+
+  const buttonBackToMenu = Button(
+    'Wróć do menu',
+    () => {
+      localStorage.setItem('wrongAnswers', '0');
+      //   render(StartScreen(), appComponent);
+      removeElementFromParent('geo-app', 'end-window');
+    },
+    'back-to-menu',
+    'end-window'
+  );
+
+  addElementToParent('end-window', buttonPlayAgain);
+  addElementToParent('end-window', buttonBackToMenu);
   return parentDiv;
 };

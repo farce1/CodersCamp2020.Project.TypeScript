@@ -2,6 +2,12 @@ import { CountryGenerator } from '../utils/api/countryGenerator';
 import { Country, GameEngineSettings } from '../../typings/interfaces';
 import { getTranslationForCountryName, mapFunctionScript } from '../utils/functions';
 import { ContainerComponent } from '../components/containerComponent/ContainerComponent';
+import { Button } from '../components/button/Button';
+import { render } from '../utils/domHandlers';
+import { MainScreen } from '../views/MainScreen';
+import { removeElementFromParent } from '../utils/removeElementFromParent/removeElementFromParent';
+import { StartWindow } from '../components/startWindow/StartWindow';
+import { appComponent, openStartWindow } from '../utils/startWindowConst';
 
 const countryLabel = (label: string): string => `Zaznacz na mapie - ${getTranslationForCountryName(label)}`;
 export class GameEngine {
@@ -79,6 +85,15 @@ export class GameEngine {
   async startEngine(gameCointainer: HTMLElement): Promise<void> {
     await this._generateCountry();
     ContainerComponent(countryLabel(this.currentCountry.name), 'gameTitle', 'europe_map_container');
+    Button(
+      'Wyjdź z gry',
+      () => {
+        removeElementFromParent('geo-app', 'mainContainer');
+        openStartWindow();
+      },
+      'back-btn',
+      'europe_map_container'
+    );
   }
 
   async _generateCountry(): Promise<void> {

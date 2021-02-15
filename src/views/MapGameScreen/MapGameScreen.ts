@@ -1,5 +1,6 @@
 import { europeMap } from '../../utils/maps/europe';
 import { GameEngine } from '../../app/GameEngine';
+import { render } from '../../utils/domHandlers';
 
 export class MapGameScreen {
   constructor(

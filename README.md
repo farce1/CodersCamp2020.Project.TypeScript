@@ -127,3 +127,14 @@ Aby uruchomić testy aplikacji, wykonaj następujące kroki:
 Wersja demo powstała przy pomocy GitHub Pages.
 Jeżeli chcesz zobaczyć wersję demo kliknij
 w [>>link<<](https://farce1.github.io/CodersCamp2020.Project.TypeScript/).
+
+## Widoki
+
+# Ekran startowy
+![image](https://user-images.githubusercontent.com/19194188/108001777-bf290180-6fed-11eb-9fd7-c85056c4aab1.png)
+
+# Główny ekran rozgrywki
+![image](https://user-images.githubusercontent.com/19194188/108001835-e54ea180-6fed-11eb-8436-705f93638432.png)
+
+# Utrwalenie poprawnej odpowiedzi
+![image](https://user-images.githubusercontent.com/19194188/108001871-00211600-6fee-11eb-8e4e-13a41959d47b.png)

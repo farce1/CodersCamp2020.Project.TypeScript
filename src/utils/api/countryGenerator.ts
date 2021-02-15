@@ -8,6 +8,6 @@ export class CountryGenerator {
   }
 
   async getCountry() {
-    return this.fetchCountries().then(response => response[Math.floor(Math.random() * response.length)]);
+    return await this.fetchCountries();
   }
 }

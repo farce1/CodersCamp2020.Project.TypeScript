@@ -23,6 +23,7 @@ function notify(evt){
   const countryId = fullCountryId.substring(0,2);
   const generatedCountry = '${alpha2Code.toLowerCase()}'
   const goodAnswers = [];
+  let numberOfWrongAnswers = 0;
   if (countryId === generatedCountry) {
     evt.target.style.fill = '#96bb7c';
     goodAnswers.push(countryId)
@@ -31,6 +32,8 @@ function notify(evt){
 } else {
 	wrongAnswers += 1;
 	localStorage.setItem("wrongAnswers", wrongAnswers)
+	numberOfWrongAnswers = +localStorage.getItem('numberOfWrongAnswers');
+    localStorage.setItem("numberOfWrongAnswers", numberOfWrongAnswers + 1);
   alert('ZŁA ODPOWIEDŹ - SPRÓBUJ ZNOWU')
 }
 }

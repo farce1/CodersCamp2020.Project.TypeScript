@@ -1,6 +1,32 @@
-
 .start-window {
   min-height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   background: $color-background-primary;
+}
+.title-box{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  color: $color-font-primary;
+  font: $font-secondary;
+  font-size: 8em;
+  text-shadow: 2px 2px 4px #000000;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.title-box img{
+  position: absolute;
+  width: 200px;
+  margin-left: calc(50% - 100px);
+  z-index: -100;
+}
+.world-img{
+  position: absolute;
+  width: 200px;
+  margin-left: calc(50% - 100px)
 }

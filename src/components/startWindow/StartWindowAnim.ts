@@ -1,5 +1,5 @@
 export const startWindowAnim = (imgClass:string, titleClass:string, btnClass:string): void => {
-  let _gsap = require('gsap')
+  const _gsap = require('gsap')
   if(imgClass){
     _gsap.TweenMax.set(`.${imgClass}`, {
       scale: 0,

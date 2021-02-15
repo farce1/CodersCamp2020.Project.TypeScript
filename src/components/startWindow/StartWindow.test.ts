@@ -1,9 +1,10 @@
+/* eslint-disable */
 
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom'
+import { getByTestId } from '@testing-library/dom';
 import { render } from '../../utils/domHandlers';
 import { StartWindow } from './StartWindow';
 import { Button } from '../button/Button';
-import { getByTestId } from '@testing-library/dom';
 import { MainScreen } from '../../views/MainScreen';
 
 describe('Test Start Window component', () => {

@@ -22,7 +22,7 @@ function notify(evt){
   const countryId = fullCountryId.substring(0,2);
   const generatedCountry = '${alpha2Code.toLowerCase()}'
   const goodAnswers = [];
-  const wrongAnswers=[];
+  const wrongAnswers = [];
   const shouldBe = generatedCountry;
   const event =  new CustomEvent("klik");
   const bad_event =  new CustomEvent("badKlik");
@@ -35,8 +35,8 @@ function notify(evt){
     document.dispatchEvent(event); 
 } else {
     wrongAnswers.push(countryId)
-    localStorage.setItem("wrongAnswers", wrongAnswers)
-    localStorage.setItem("shouldBe", generatedCountry)
+    localStorage.setItem("wrongAnswers", wrongAnswers.length)
+    localStorage.setItem("shouldBe", shouldBe)
     document.dispatchEvent(bad_event); 
   alert('ZŁA ODPOWIEDŹ - SPRÓBUJ ZNOWU')
 }

@@ -8,8 +8,11 @@ import { MainScreen } from '../views/MainScreen';
 import { removeElementFromParent } from '../utils/removeElementFromParent/removeElementFromParent';
 import { StartWindow } from '../components/startWindow/StartWindow';
 import { appComponent, openStartWindow } from '../utils/constsTagElementsAndWindows';
+import { endWindow } from '../components/endWindow/endWindow';
 
 const countryLabel = (label: string): string => `Zaznacz na mapie - ${getTranslationForCountryName(label)}`;
+const numberOfQuestions = 3;
+
 export class GameEngine {
   constructor() {
     document.addEventListener('klik', this.onCountryClick.bind(this), false);
@@ -37,7 +40,9 @@ export class GameEngine {
     } else {
       this.currentCountry = { name: 'x', alpha2Code: 'x' };
       countryNameLabel && (countryNameLabel.innerText = countryLabel(this.currentCountry.name));
-      alert('koniec gry! Tutaj otwórz modal');
+      //   alert('koniec gry! Tutaj otwórz modal');
+      removeElementFromParent('geo-app', 'mainContainer');
+      render(endWindow(`${numberOfQuestions}`), appComponent);
     }
 
     this._addCountryScriptFunction(this.currentCountry);
@@ -98,7 +103,7 @@ export class GameEngine {
 
   async _generateCountry(): Promise<void> {
     const generateRandomUniqueIndexes = (indexesArray: number[] = []): number[] => {
-      if (indexesArray.length === 3) {
+      if (indexesArray.length === numberOfQuestions) {
         return indexesArray;
       }
       const randomNumber = Math.floor(Math.random() * 53);

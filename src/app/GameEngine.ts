@@ -7,9 +7,11 @@ const countryLabel = (label: string): string => `Zaznacz na mapie - ${getTransla
 export class GameEngine {
   constructor() {
     document.addEventListener('klik', this.onCountryClick.bind(this), false);
+    document.addEventListener('badKlik', this.onWrongCountryClick.bind(this), false);
   }
   settings: GameEngineSettings = {
     userProperAnswers: [],
+    userWrongAnswers: [],
     countryGenerator: new CountryGenerator(),
     countryToAsk: [],
   };
@@ -30,7 +32,7 @@ export class GameEngine {
 
   onCountryClick() {
     this.setCurrentCountry();
-
+    // proper answers
     if (this.settings.userProperAnswers.length !== 0) {
       const isAlreadyInLocalStorage: boolean = this.settings.userProperAnswers.every(userProperAnswer => {
         return userProperAnswer === localStorage.goodAnswers;
@@ -44,7 +46,22 @@ export class GameEngine {
       this.settings.userProperAnswers = [localStorage.goodAnswers];
     }
   }
-
+  onWrongCountryClick() {
+    this.settings.userWrongAnswers = [
+      ...this.settings.userWrongAnswers,
+      { wrongAnswer: localStorage.wrongAnswers, shouldBe: localStorage.shouldBe },
+    ];
+    if (this.settings.userWrongAnswers.length >= 3) {
+      const indexOfLlastOneBadAnswer = this.settings.userWrongAnswers.length - 1;
+      const oneQuestion = this.settings.userWrongAnswers[indexOfLlastOneBadAnswer].shouldBe;
+      const tryingToFindBadAnswersForOneQuestion = this.settings.userWrongAnswers.filter((wrongAnswer, i) => {
+        return wrongAnswer.shouldBe === oneQuestion;
+      });
+      if(tryingToFindBadAnswersForOneQuestion.length === 3){
+        this.setCurrentCountry();
+      }
+    }
+  }
   _addCountryScriptFunction(country: Country): void {
     const newScript = document.createElement('script');
     const inlineScript = document.createTextNode(mapFunctionScript(country));

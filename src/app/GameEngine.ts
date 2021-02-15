@@ -11,7 +11,7 @@ import { appComponent, openStartWindow } from '../utils/constsTagElementsAndWind
 import { endWindow } from '../components/endWindow/endWindow';
 
 const countryLabel = (label: string): string => `Zaznacz na mapie - ${getTranslationForCountryName(label)}`;
-const numberOfQuestions: number = 3;
+const numberOfQuestions = 3;
 
 export class GameEngine {
   constructor() {

@@ -2,6 +2,12 @@ import { CountryGenerator } from '../utils/api/countryGenerator';
 import { Country, GameEngineSettings } from '../../typings/interfaces';
 import { getTranslationForCountryName, mapFunctionScript } from '../utils/functions';
 import { ContainerComponent } from '../components/containerComponent/ContainerComponent';
+import { Button } from '../components/button/Button';
+import { render } from '../utils/domHandlers';
+import { MainScreen } from '../views/MainScreen';
+import { removeElementFromParent } from '../utils/removeElementFromParent/removeElementFromParent';
+import { StartWindow } from '../components/startWindow/StartWindow';
+import { appComponent, openStartWindow } from '../utils/constsTagElementsAndWindows';
 
 const countryLabel = (label: string): string => `Zaznacz na mapie - ${getTranslationForCountryName(label)}`;
 export class GameEngine {
@@ -26,7 +32,14 @@ export class GameEngine {
     ++this.currentCountryIndex;
     this.currentCountry = this.settings.countryToAsk[this.currentCountryIndex];
     const countryNameLabel = document.getElementById('container-component');
-    countryNameLabel && (countryNameLabel.innerText = countryLabel(this.currentCountry.name));
+    if (this.currentCountry !== undefined) {
+      countryNameLabel && (countryNameLabel.innerText = countryLabel(this.currentCountry.name));
+    } else {
+      this.currentCountry = { name: 'x', alpha2Code: 'x' };
+      countryNameLabel && (countryNameLabel.innerText = countryLabel(this.currentCountry.name));
+      alert('koniec gry! Tutaj otwórz modal');
+    }
+
     this._addCountryScriptFunction(this.currentCountry);
   }
 
@@ -57,7 +70,7 @@ export class GameEngine {
       const tryingToFindBadAnswersForOneQuestion = this.settings.userWrongAnswers.filter((wrongAnswer, i) => {
         return wrongAnswer.shouldBe === oneQuestion;
       });
-      if(tryingToFindBadAnswersForOneQuestion.length === 3){
+      if (tryingToFindBadAnswersForOneQuestion.length === 3) {
         this.setCurrentCountry();
       }
     }
@@ -72,11 +85,20 @@ export class GameEngine {
   async startEngine(gameCointainer: HTMLElement): Promise<void> {
     await this._generateCountry();
     ContainerComponent(countryLabel(this.currentCountry.name), 'gameTitle', 'europe_map_container');
+    Button(
+      'Wyjdź z gry',
+      () => {
+        removeElementFromParent('geo-app', 'mainContainer');
+        openStartWindow();
+      },
+      'back-btn',
+      'europe_map_container'
+    );
   }
 
   async _generateCountry(): Promise<void> {
     const generateRandomUniqueIndexes = (indexesArray: number[] = []): number[] => {
-      if (indexesArray.length === 24) {
+      if (indexesArray.length === 3) {
         return indexesArray;
       }
       const randomNumber = Math.floor(Math.random() * 53);
@@ -92,5 +114,6 @@ export class GameEngine {
     this.settings.countryToAsk = randomNumbers.map((num: number) => countries[num]);
     this.currentCountry = this.settings.countryToAsk[0];
     this._addCountryScriptFunction(this.settings.countryToAsk[0]);
+    console.log(this.settings.countryToAsk);
   }
 }

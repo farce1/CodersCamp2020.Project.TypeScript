@@ -6,15 +6,15 @@ export interface Country {
 }
 
 export interface CompareWrongAnswers {
-  wrongAnswer: string
-  shouldBe: string
+  wrongAnswer: string;
+  shouldBe: string;
 }
 
 export interface GameEngineSettings {
   userProperAnswers: Object[];
   userWrongAnswers: CompareWrongAnswers[];
-  countryGenerator: CountryGenerator;
-  usedCountryGenerator: boolean,
-  countries: [],
+  countryGenerator: CountryGenerator | null;
+  usedCountryGenerator: boolean;
+  countries: [];
   countryToAsk: Country[];
 }

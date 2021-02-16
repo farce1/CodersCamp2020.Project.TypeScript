@@ -7,12 +7,13 @@ export const MainScreen = (): HTMLElement => {
 
   const defaultGameModeName = 'EUROPE';
 
-  resetView(container);
   const mapGameScreen = new MapGameScreen({
     gameContainter: container,
     gameMode: defaultGameModeName,
+    gameExist: false,
+    countryGameEngine: undefined,
     clearViewCallbackFunction: (): void => {
-      //resetView(container);
+      resetView(container);
     },
   });
 

@@ -8,7 +8,7 @@
     transform: translate(0);
   }
   100% {
-    transform: translate(0);
+    transform: translate(0, 70px);
   }
 }
 
@@ -16,16 +16,24 @@
   font-size: 125px;
   text-align: center;
   position: relative;
-  color: $color-font-secondary;
-  font-family: 'Rubik';
+  color: $color-font-primary;
+  text-shadow: 2px 2px 4px #000000;
+  font-family: Coiny;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 106px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 .title > span {
   position: relative;
   display: inline-block;
+  z-index: 10;
 
   animation-duration: 1.2s;
   animation-timing-function: ease-in-out;
-  transform: translate(-1500px, 300px);
+  transform: translate(-1900px, 300px);
 
   animation-fill-mode: forwards;
 

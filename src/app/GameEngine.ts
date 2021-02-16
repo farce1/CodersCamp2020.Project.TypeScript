@@ -5,11 +5,16 @@ import { ContainerComponent } from '../components/containerComponent/ContainerCo
 import { Button } from '../components/button/Button';
 import { removeElementFromParent } from '../utils/removeElementFromParent/removeElementFromParent';
 import { openStartWindow } from '../utils/constsTagElementsAndWindows';
+import { StartWindow } from '../components/startWindow/StartWindow';
+import { appComponent, openStartWindow } from '../utils/constsTagElementsAndWindows';
+import { endWindow } from '../components/endWindow/endWindow';
 
 const countryLabel = (label: string): string => `Zaznacz na mapie - ${getTranslationForCountryName(label)}`;
+const numberOfQuestions = 3;
+
 export class GameEngine {
   constructor() {
-    document.addEventListener('klik', this.onCorrectCountryClick.bind(this), false);
+    document.addEventListener('klik', this.onCountryClick.bind(this), false);
     document.addEventListener('badKlik', this.onWrongCountryClick.bind(this), false);
   }
   settings: GameEngineSettings = {
@@ -37,6 +42,11 @@ export class GameEngine {
       countryNameLabel && (countryNameLabel.innerText = countryLabel('x'));
       this.reset();
       alert('koniec gry! Tutaj otwórz modal');
+      this.currentCountry = { name: 'x', alpha2Code: 'x' };
+      countryNameLabel && (countryNameLabel.innerText = countryLabel(this.currentCountry.name));
+      //   alert('koniec gry! Tutaj otwórz modal');
+      removeElementFromParent('geo-app', 'mainContainer');
+      render(endWindow(`${numberOfQuestions}`), appComponent);
     }
 
     this._addCountryScriptFunction(this.currentCountry);

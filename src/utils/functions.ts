@@ -22,10 +22,11 @@ function notify(evt){
   const countryId = fullCountryId.substring(0,2);
   const generatedCountry = '${alpha2Code.toLowerCase()}'
   const goodAnswers = [];
-  const wrongAnswers=[];
+  const wrongAnswers = [];
   const shouldBe = generatedCountry;
   const event =  new CustomEvent("klik");
   const bad_event =  new CustomEvent("badKlik");
+  let numberOfWrongAnswers = 0;
   
   if (countryId === generatedCountry) {
     evt.target.style.fill = '#96bb7c';
@@ -35,8 +36,10 @@ function notify(evt){
     document.dispatchEvent(event); 
 } else {
     wrongAnswers.push(countryId)
-    localStorage.setItem("wrongAnswers", wrongAnswers)
-    localStorage.setItem("shouldBe", generatedCountry)
+    localStorage.setItem("wrongAnswers", wrongAnswers.length)
+    localStorage.setItem("shouldBe", shouldBe)
+	numberOfWrongAnswers = +localStorage.getItem('numberOfWrongAnswers');
+	localStorage.setItem('numberOfWrongAnswers', numberOfWrongAnswers + 1);
     document.dispatchEvent(bad_event); 
   alert('ZŁA ODPOWIEDŹ - SPRÓBUJ ZNOWU')
 }

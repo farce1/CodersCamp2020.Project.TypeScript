@@ -6,7 +6,12 @@
 
 // Components
 @import '../components/button/Button';
-@import '../views/MainScreen/MainScreen';
-@import '../components/Title/Title.scss';
-@import 'src/components/containerComponent/ContainerComponent';
 @import '../components/rulesSelect/RulesSelect';
+@import '../components/Title/Title';
+@import '../components/containerComponent/ContainerComponent';
+@import '../components/startWindow/StartWindow';
+
+// Views
+@import '../views/MapGameScreen/MapGameScreen';
+@import '../components/endWindow/endWindow.scss';
+@import '../views/MainScreen/MainScreen';

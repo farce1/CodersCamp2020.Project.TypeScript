@@ -16,9 +16,9 @@ export class MapGameScreen {
   }
 
   startGame() {
-    const countryGameEngine = new GameEngine();
+    window.countryGameEngine = new GameEngine();
     this._clearMainContainer();
     this.settings.gameContainter.insertAdjacentHTML('afterbegin', europeMap());
-    countryGameEngine.startEngine(this.settings.gameContainter);
+    window.countryGameEngine.startEngine(this.settings.gameContainter);
   }
 }

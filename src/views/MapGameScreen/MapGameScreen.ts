@@ -15,10 +15,12 @@ export class MapGameScreen {
     this.settings.clearViewCallbackFunction();
   }
 
+
+
   startGame() {
-    window.countryGameEngine = new GameEngine();
-    this._clearMainContainer();
-    this.settings.gameContainter.insertAdjacentHTML('afterbegin', europeMap());
-    window.countryGameEngine.startEngine(this.settings.gameContainter);
+      const countryGameEngine = new GameEngine();
+      this._clearMainContainer();
+      this.settings.gameContainter.insertAdjacentHTML('afterbegin', europeMap());
+      countryGameEngine.startEngine(this.settings.gameContainter);
   }
 }

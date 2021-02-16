@@ -9,7 +9,7 @@ import { appComponent, openStartWindow } from '../utils/constsTagElementsAndWind
 const countryLabel = (label: string): string => `Zaznacz na mapie - ${getTranslationForCountryName(label)}`;
 export class GameEngine {
   constructor() {
-    console.warn('executing constructor')
+    console.warn('executing constructor');
     document.addEventListener('klik', this.onCorrectCountryClick.bind(this), false);
     document.addEventListener('badKlik', this.onWrongCountryClick.bind(this), false);
   }
@@ -22,25 +22,24 @@ export class GameEngine {
   currentCountry: Country = { name: 'x', alpha2Code: 'x' };
   currentCountryIndex = 0;
 
-  getCurrentCountry(): string {
-    return this.currentCountry.name;
-  }
+  getCurrentCountry = (): string => this.currentCountry.name;
 
   setCurrentCountry() {
-    console.log('before',this.currentCountryIndex, this.currentCountry)
+    console.log('ffff', this.settings.countryToAsk);
+    console.log('before', this.currentCountryIndex, this.currentCountry);
     ++this.currentCountryIndex;
 
     this.currentCountry = this.settings.countryToAsk[this.currentCountryIndex];
-    console.log('after',this.currentCountryIndex, this.currentCountry)
+    console.log('after', this.currentCountryIndex, this.currentCountry);
     const countryNameLabel = document.getElementById('container-component');
     if (this.currentCountry !== undefined) {
-      console.log('wykon 1')
+      console.log('wykon 1');
       countryNameLabel && (countryNameLabel.innerText = countryLabel(this.currentCountry.name));
     } else {
-      console.log('wykon 2')
+      console.log('wykon 2');
       // this.currentCountry = { name: 'x', alpha2Code: 'x' };
       countryNameLabel && (countryNameLabel.innerText = countryLabel('x'));
-      this.reset()
+      this.reset();
       alert('koniec gry! Tutaj otwórz modal');
     }
 
@@ -48,8 +47,10 @@ export class GameEngine {
   }
 
   onCorrectCountryClick() {
-    console.log('executing timess xxxx')
+    console.log('executing timess xxxx');
+
     this.setCurrentCountry();
+
     if (this.settings.userProperAnswers.length !== 0) {
       const isAlreadyInLocalStorage: boolean = this.settings.userProperAnswers.every(userProperAnswer => {
         return userProperAnswer === localStorage.goodAnswers;
@@ -92,10 +93,10 @@ export class GameEngine {
 
   async startEngine(gameCointainer: HTMLElement): Promise<void> {
     await this._generateCountry();
-    console.log('od razu po generate', this.currentCountry)
+    console.log('od razu po generate', this.currentCountry);
     localStorage.clear();
-    console.log('wywoluje sie',this.currentCountryIndex, this.currentCountry)
-    console.log(localStorage)
+    console.log('wywoluje sie', this.currentCountryIndex, this.currentCountry);
+    console.log(localStorage);
     ContainerComponent(countryLabel(this.currentCountry.name), 'gameTitle', 'europe_map_container');
     Button(
       'Wyjdź z gry',
@@ -125,15 +126,16 @@ export class GameEngine {
     const countries = await this.settings.countryGenerator.getCountry();
 
     this.settings.countryToAsk = randomNumbers.map((num: number) => countries[num]);
-    this.currentCountry =  this.settings.countryToAsk[this.currentCountryIndex];
-    console.log('generate pool',this.currentCountry);
+    this.currentCountry = this.settings.countryToAsk[this.currentCountryIndex];
+    console.log('generate pool', this.currentCountry);
     this._addCountryScriptFunction(this.settings.countryToAsk[this.currentCountryIndex]);
     console.log(this.settings.countryToAsk);
-
   }
 
   reset() {
-    console.log('RESET')
+    console.log('RESET');
+    document.removeEventListener('klik', this.onCorrectCountryClick.bind(this), false);
+    document.removeEventListener('badKlik', this.onWrongCountryClick.bind(this), false);
     this.settings.userProperAnswers = [];
     this.settings.userWrongAnswers = [];
     this.settings.countryToAsk = [];
@@ -146,9 +148,7 @@ export class GameEngine {
       this.settings.countryToAsk,
       this.currentCountry,
       this.currentCountryIndex,
-        localStorage
+      localStorage
     );
-    window.countryGameEngine = null
-
   }
 }

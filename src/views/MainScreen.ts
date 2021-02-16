@@ -12,7 +12,7 @@ export const MainScreen = (): HTMLElement => {
     gameContainter: container,
     gameMode: defaultGameModeName,
     clearViewCallbackFunction: (): void => {
-      resetView(container);
+      //resetView(container);
     },
   });
 

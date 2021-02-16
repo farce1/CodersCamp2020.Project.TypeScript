@@ -2,11 +2,11 @@
 @import 'app';
 @import 'normalize';
 @import 'variables';
-@import "reset";
-
+@import 'reset';
 
 // Components
 @import '../components/button/Button';
-
+@import '../views/MainScreen/MainScreen';
 @import '../components/Title/Title.scss';
 @import 'src/components/containerComponent/ContainerComponent';
+@import '../components/rulesSelect/RulesSelect';

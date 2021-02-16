@@ -14,6 +14,7 @@ export const endWindow = (goodAnserw: String) => {
     wrongAnswersCount === '1' ? 'błąd' : 'błędów'
   }</p>
 							`;
+  localStorage.setItem('numberOfWrongAnswers', '0');
 
   render(
     Button(

@@ -73,7 +73,7 @@ Wygląd strony zaprojektowany został przy użyciu narzędzia Figma.
 Wszelkie schematy działań związanych z projektem, systematycznie mapowano na tablicy miro.
 Geo Mind to gra, sprawdzająca znajomość krajów w Europie.
 Do zrealizowania projektu wykorzystano zewnętrzne API.
-Wykonanie gry obejęło niżej wymienione zagadnienia, w celu ich utrwalenia:
+Wykonanie gry objęło niżej wymienione zagadnienia, w celu ich utrwalenia:
 
 - typy podstawowe
 - definiowanie własnych typów

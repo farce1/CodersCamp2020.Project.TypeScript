@@ -11,11 +11,8 @@ describe('Test title component', () => {
     document.body.innerHTML = ` <div id="geo-app"></div>
    `;
     const appComponent: HTMLElement = document.getElementById('geo-app')!;
-    const mainScreen: HTMLElement = render(
-      MainScreen(() => {}),
-      appComponent
-    );
-    render(AnimatedTitle, mainScreen);
+
+    render(AnimatedTitle, appComponent);
   });
   it('should render properly', () => {
     expect(getByTestId(document.documentElement, 'animatedTitleTest')).toBeInTheDocument();

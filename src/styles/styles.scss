@@ -2,8 +2,7 @@
 @import 'app';
 @import 'normalize';
 @import 'variables';
-@import "reset";
-
+@import 'reset';
 
 // Components
 @import '../components/button/Button';
@@ -13,3 +12,4 @@
 
 // Views
 @import '../views/MapGameScreen/MapGameScreen';
+@import '../components/endWindow/endWindow.scss';

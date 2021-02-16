@@ -43,15 +43,19 @@
   height: 400px;
   background: #fad586;
   border-radius: 15px;
-  padding: 22px;
+  padding: 50px;
   width: 83%;
   font-family: Rubik;
   opacity: 0;
   animation: show-up 600ms ease-in-out 1500ms forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 @media (min-width: 1856px) {
   .rules__wrapper {
     margin: 145px auto;
+    border-bottom: 0.1px solid white;
   }
 }
 
@@ -60,7 +64,7 @@
   font-weight: 400;
 
   font-style: normal;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 24px;
   line-height: 28px;
 }
@@ -93,43 +97,12 @@
     justify-content: space-between;
   }
 }
-.main-screen__rules-select {
-  background-color: $color-background-secondary;
-  font-family: Coiny;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 400;
-  width: 400px;
-  height: 100px;
-  border-radius: 15px;
-
-  text-align: center;
-
-  color: black;
-  display: flex;
-  text-align: center;
-}
-.righ-arrow-button,
-.left-arrow-button {
-  background-color: transparent;
-  border: 0;
-  color: black;
-  box-shadow: none;
-  width: fit-content;
-  padding: 8px;
+.main-screen_buttons-wrapper > button:hover {
+  box-shadow: 1px 1px 1px 1px black;
 }
 
-.left-arrow-button::after {
-  content: '🡅';
-}
-.righ-arrow-button::after {
-  content: '🡇';
-}
-@media (min-width: 1856px) {
-  .left-arrow-button::after {
-    content: '🡄';
-  }
-  .righ-arrow-button::after {
-    content: '🡆';
-  }
+.break-line {
+  height: 5px;
+  width: 100%;
+  background-color: rgba($color: #ffffff, $alpha: 0.6);
 }

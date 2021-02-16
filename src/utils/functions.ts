@@ -26,6 +26,7 @@ function notify(evt){
   const shouldBe = generatedCountry;
   const event =  new CustomEvent("klik");
   const bad_event =  new CustomEvent("badKlik");
+  let numberOfWrongAnswers = 0;
   
   if (countryId === generatedCountry) {
     evt.target.style.fill = '#96bb7c';
@@ -37,6 +38,8 @@ function notify(evt){
     wrongAnswers.push(countryId)
     localStorage.setItem("wrongAnswers", wrongAnswers.length)
     localStorage.setItem("shouldBe", shouldBe)
+	numberOfWrongAnswers = +localStorage.getItem('numberOfWrongAnswers');
+	localStorage.setItem('numberOfWrongAnswers', numberOfWrongAnswers + 1);
     document.dispatchEvent(bad_event); 
   alert('ZŁA ODPOWIEDŹ - SPRÓBUJ ZNOWU')
 }

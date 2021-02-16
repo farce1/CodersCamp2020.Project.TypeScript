@@ -6,12 +6,12 @@ import { removeElementFromParent } from '../../utils/removeElementFromParent/rem
 
 export const endWindow = (goodAnserw: String) => {
   const appComponent: HTMLElement = document.getElementById('geo-app')!;
-  const wrongAnswersCount = localStorage.getItem('wrongAnswersCount');
+  const wrongAnswersCount = localStorage.getItem('numberOfWrongAnswers');
   const parentDiv = document.createElement('div');
   parentDiv.id = 'end-window';
   parentDiv.innerHTML = `<h1>Koniec gry</h1>
 						<p>Na <span>${goodAnserw}</span> rundy popełniłeś <span>${wrongAnswersCount}</span> ${
-                            wrongAnswersCount === '1' ? 'błąd' : 'błędów'
+    wrongAnswersCount === '1' ? 'błąd' : 'błędów'
   }</p>
 							`;
 
@@ -19,7 +19,7 @@ export const endWindow = (goodAnserw: String) => {
     Button(
       'Zagraj ponownie',
       () => {
-        localStorage.setItem('wrongAnswers', '0');
+        localStorage.setItem('numberOfWrongAnswers', '0');
         render(MainScreen(), appComponent);
         removeElementFromParent('geo-app', 'end-window');
       },
@@ -33,7 +33,7 @@ export const endWindow = (goodAnserw: String) => {
     Button(
       'Wróć do menu',
       () => {
-        localStorage.setItem('wrongAnswers', '0');
+        localStorage.setItem('numberOfWrongAnswers', '0');
         //   render(StartScreen(), appComponent);
         removeElementFromParent('geo-app', 'end-window');
       },

@@ -4,17 +4,16 @@ import { getTranslationForCountryName, mapFunctionScript } from '../utils/functi
 import { ContainerComponent } from '../components/containerComponent/ContainerComponent';
 import { Button } from '../components/button/Button';
 import { removeElementFromParent } from '../utils/removeElementFromParent/removeElementFromParent';
-import { openStartWindow } from '../utils/constsTagElementsAndWindows';
-import { StartWindow } from '../components/startWindow/StartWindow';
 import { appComponent, openStartWindow } from '../utils/constsTagElementsAndWindows';
 import { endWindow } from '../components/endWindow/endWindow';
+import {render} from "../utils/domHandlers";
 
 const countryLabel = (label: string): string => `Zaznacz na mapie - ${getTranslationForCountryName(label)}`;
 const numberOfQuestions = 3;
 
 export class GameEngine {
   constructor() {
-    document.addEventListener('klik', this.onCountryClick.bind(this), false);
+    document.addEventListener('klik', this.onCorrectCountryClick.bind(this), false);
     document.addEventListener('badKlik', this.onWrongCountryClick.bind(this), false);
   }
   settings: GameEngineSettings = {

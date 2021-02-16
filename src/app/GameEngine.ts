@@ -17,6 +17,8 @@ export class GameEngine {
     userProperAnswers: [],
     userWrongAnswers: [],
     countryGenerator: new CountryGenerator(),
+    usedCountryGenerator: false,
+    countries: [],
     countryToAsk: [],
   };
   currentCountry: Country = { name: 'x', alpha2Code: 'x' };
@@ -123,9 +125,13 @@ export class GameEngine {
     };
 
     const randomNumbers = generateRandomUniqueIndexes();
-    const countries = await this.settings.countryGenerator.getCountry();
+    if(!this.settings.usedCountryGenerator){
+     const countries = await this.settings.countryGenerator.getCountry();
+     this.settings.countries = await countries;
+      this.settings.usedCountryGenerator = true
+    }
 
-    this.settings.countryToAsk = randomNumbers.map((num: number) => countries[num]);
+    this.settings.countryToAsk = randomNumbers.map((num: number) => this.settings.countries[num]);
     this.currentCountry = this.settings.countryToAsk[this.currentCountryIndex];
     console.log('generate pool', this.currentCountry);
     this._addCountryScriptFunction(this.settings.countryToAsk[this.currentCountryIndex]);

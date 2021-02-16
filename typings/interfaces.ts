@@ -14,5 +14,7 @@ export interface GameEngineSettings {
   userProperAnswers: Object[];
   userWrongAnswers: CompareWrongAnswers[];
   countryGenerator: CountryGenerator;
+  usedCountryGenerator: boolean,
+  countries: [],
   countryToAsk: Country[];
 }
